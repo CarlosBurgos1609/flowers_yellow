@@ -193,6 +193,7 @@
 @media (min-width: 1024px) {
     .flower-field {
         display: block;
+        
     }
     
     /* Ajustar posición de letras para el campo de flores */
@@ -664,6 +665,28 @@ body::before {
     }
     100% {
         transform: translateX(110vw) translateY(-50px) rotate(0deg);
+    }
+}
+
+/* Contenedor de las letras */
+#lyrics {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que el texto se ajuste en varias líneas */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center; /* Asegurar que el texto esté centrado */
+    max-width: 80%; /* Limitar el ancho del texto */
+    margin: 0 auto; /* Centrar el contenedor */
+    overflow-wrap: normal; /* Evitar que las palabras se dividan */
+    word-break: keep-all; /* Mantener las palabras juntas */
+    white-space: normal; /* Permitir que el texto se ajuste automáticamente */
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    #lyrics {
+        font-size: clamp(1rem, 4vw, 1.5rem); /* Ajustar el tamaño del texto dinámicamente */
+        max-width: 95%; /* Aumentar el ancho máximo en pantallas pequeñas */
     }
 }
 

@@ -127,90 +127,67 @@ function showAudioMessage() {
     }, 4000);
 }
 
-// Array de objetos que contiene cada línea y su tiempo de aparición en segundos
+// Actualización del objeto lyricsData con los intervalos proporcionados
 var lyricsData = [
-  { text: "Ella sabía que él sabía, que algún día pasaría", time: 1 },
-  { text: "Que vendría a buscarla, con sus flores amarillas", time: 3  },
-  { text: "Lonely before the sun cried", time: 27 },
-  { text: "Fell from the sky", time: 32 },
-  { text: "Like water drops", time: 33 },
-  { text: "Where I'm now? I don't know why", time: 41 },
-  { text: "Nice butterflies in my hands", time: 47 },
-  { text: "Too much light for twilight", time: 54 },
-  { text: "In the mood for the flowers love", time: 59 },
-  { text: "That vision", time: 67 },
-  { text: "Really strong, blew my mind", time: 72 },
-  { text: "Silence Let me see what it was", time: 78 },
-  { text: "I only want to live in clouds", time: 83 },
-  { text: "Where I'm now? I don't know why", time: 91 },
-  { text: "Nice butterflies in my hands", time: 97 },
-  { text: "Too much light for twilight", time: 104 },
-  { text: "In the mood for the flowers love", time: 108 },
-  { text: "At the time", time: 144 },
-  { text: "The whisper of birds", time: 148 },
-  { text: "Lonely before the sun cried", time: 153 },
-  { text: "Fell from the sky", time: 158 },
-  { text: "Like water drops", time: 164 },
-  { text: "Where I'm now? I don't know why", time: 169 },
-  { text: "Nice butterflies in my hands", time: 176 },
-  { text: "Too much light for twilight", time: 183 },
-  { text: "In the mood for the flowers", time: 188 },
-  { text: "Love.", time: 140 },
+  { text: "Él la estaba esperando con una flor amarilla", start: 0.000, end: 6.732 },
+  { text: "Ella lo estaba soñando con la luz en su pupila", start: 6.733, end: 12.914 },
+  { text: "Y el amarillo del sol iluminaba la esquina (la esquina)", start: 12.915, end: 20.842 },
+  { text: "Lo sentía tan cercano, lo sentía desde niña", start: 20.843, end: 25.611 },
+  { text: "Ella sabía que él sabía, que algún día pasaría", start: 25.612, end: 32.504 },
+  { text: "Que vendría a buscarla, con sus flores amarillas", start: 32.505, end: 39.711 },
+  { text: "No te apures no detengas, el instante del encuentro", start: 39.712, end: 44.505 },
+  { text: "Está dicho que es un hecho, no la pierdas no hay derecho", start: 44.506, end: 48.647 },
+  { text: "No te olvides, que la vida", start: 48.648, end: 52.189 },
+  { text: "Casi nunca está dormida", start: 52.190, end: 56.784 }
 ];
 
-// Función para animar texto letra por letra
-function animateTextLetters(text) {
-    const letters = text.split('').map((letter, index) => {
-        if (letter === ' ') {
-            return ' ';
-        }
-        return `<span style="animation-delay: ${index * 0.05}s">${letter}</span>`;
-    }).join('');
+// Función para animar texto palabra por palabra
+function animateTextWords(text) {
+    const words = text.split(' ').map((word, index) => {
+        return `<span style="animation-delay: ${index * 0.3}s; display: inline-block;">${word}</span>`;
+    }).join(' ');
     
-    return `<span class="lyric-text">${letters}</span>`;
+    return `<span class="lyric-text">${words}</span>`;
 }
 
-// Animar las letras con efectos mejorados
+// Función para actualizar las letras (ajustar para usar start y end)
 function updateLyrics() {
   if (!audio || !lyrics) return;
-  
-  var time = Math.floor(audio.currentTime);
+
+  var currentTime = audio.currentTime;
   var currentLine = lyricsData.find(
-    (line) => time >= line.time && time < line.time + 6
+    (line) => currentTime >= line.start && currentTime <= line.end
   );
 
   if (currentLine) {
-    // Solo cambiar el texto si es diferente para evitar parpadeo
-    var newText = animateTextLetters(currentLine.text);
+    var newText = animateTextWords(currentLine.text); // Usar animación por palabras
     if (lyrics.getAttribute('data-current-text') !== currentLine.text) {
       lyrics.setAttribute('data-current-text', currentLine.text);
       lyrics.innerHTML = newText;
       lyrics.classList.add('active');
-      
-      // Animación de entrada suave
+
+      // Animación de entrada más rápida
       lyrics.style.opacity = 0;
-      lyrics.style.transform = 'translate(-50%, -50%) translateY(20px) scale(0.8)';
-      
-      // Aplicar animación con delay
+      lyrics.style.transform = 'translate(-50%, -50%) translateY(10px) scale(0.9)';
+
       setTimeout(() => {
-        lyrics.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        lyrics.style.transition = 'all 0.5s ease-out';
         lyrics.style.opacity = 1;
         lyrics.style.transform = 'translate(-50%, -50%) translateY(0) scale(1)';
       }, 50);
     }
   } else {
-    // Solo ocultar si hay contenido para evitar parpadeo
     if (lyrics.getAttribute('data-current-text') && lyrics.style.opacity !== "0") {
-      lyrics.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      lyrics.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
       lyrics.style.opacity = 0;
-      lyrics.style.transform = 'translate(-50%, -50%) translateY(-20px) scale(0.8)';
-      
+      lyrics.style.transform = 'translate(-50%, -50%) translateY(-10px) scale(0.9)';
+
       setTimeout(() => {
         lyrics.innerHTML = "";
         lyrics.classList.remove('active');
         lyrics.setAttribute('data-current-text', '');
         lyrics.style.transform = 'translate(-50%, -50%)';
-      }, 600);
+      }, 400);
     }
   }
 }
