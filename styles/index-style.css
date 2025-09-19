@@ -1,0 +1,331 @@
+/* Reset y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Clases de fuentes personalizadas */
+.dancing-script-special {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.lobster-two-regular {
+    font-family: "Lobster Two", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lobster-two-bold {
+    font-family: "Lobster Two", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.satisfy-regular {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.condiment-regular {
+    font-family: "Condiment", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Estilos del cuerpo */
+body {
+    min-height: 100vh;
+    background: linear-gradient(to top, #000000 0%, #1a1a2e 50%, #16213e 70%, #0f3460 100%);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal centrado */
+.main-container {
+    text-align: center;
+    z-index: 100;
+    position: relative;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Sección de saludo */
+.greeting-section {
+    margin-bottom: 60px;
+    animation: fadeInUp 2s ease-out;
+}
+
+.greeting-section h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease-in-out infinite, textFloat 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+}
+
+.greeting-section p {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #b8e6b8;
+    text-shadow: 0 0 15px rgba(184, 230, 184, 0.5);
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1s forwards;
+}
+
+/* Sección del botón */
+.button-section {
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 2s forwards;
+}
+
+/* Botón mágico con efectos neon */
+.magic-button {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border: none;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 40px rgba(255, 215, 0, 0.4),
+        0 0 60px rgba(255, 215, 0, 0.2);
+    animation: buttonPulse 3s ease-in-out infinite;
+}
+
+.magic-button:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.8),
+        0 0 60px rgba(255, 215, 0, 0.6),
+        0 0 90px rgba(255, 215, 0, 0.4);
+    animation: buttonPulse 1s ease-in-out infinite;
+}
+
+.magic-button:active {
+    transform: scale(0.98);
+}
+
+.button-glow {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #fff8dc, #ffd700);
+    border-radius: 52px;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.7;
+    animation: glowRotate 3s linear infinite;
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Contenedor de luciérnagas */
+.fireflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Estilos de luciérnagas */
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #ffff99, #ffd700);
+    border-radius: 50%;
+    opacity: 0;
+    bottom: -20px; /* Cambié de 0 a -20px para que empiecen más abajo */
+    animation: flyUp 12s linear infinite, twinkle 2s ease-in-out infinite alternate;
+    box-shadow: 
+        0 0 10px rgba(255, 255, 153, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 30px rgba(255, 215, 0, 0.3);
+    will-change: transform, opacity;
+}
+
+.firefly.large {
+    width: 6px;
+    height: 6px;
+    animation: flyUp 14s linear infinite, twinkle 1.5s ease-in-out infinite alternate;
+    box-shadow: 
+        0 0 15px rgba(255, 255, 153, 0.9),
+        0 0 25px rgba(255, 215, 0, 0.7),
+        0 0 35px rgba(255, 215, 0, 0.4);
+}
+
+.firefly.small {
+    width: 2px;
+    height: 2px;
+    animation: flyUp 10s linear infinite, twinkle 3s ease-in-out infinite alternate;
+    box-shadow: 
+        0 0 8px rgba(255, 255, 153, 0.7),
+        0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% { 
+        background-position: 0% 50%; 
+    }
+    50% { 
+        background-position: 100% 50%; 
+    }
+}
+
+@keyframes textFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.6),
+            0 0 40px rgba(255, 215, 0, 0.4),
+            0 0 60px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 0.8),
+            0 0 60px rgba(255, 215, 0, 0.6),
+            0 0 90px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes glowRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flyUp {
+    0% {
+        opacity: 0;
+        transform: translateY(0vh) translateX(0px) scale(0.5);
+        bottom: -10px;
+    }
+    10% {
+        opacity: 0.8;
+        transform: translateY(-10vh) translateX(calc(var(--horizontal-offset, 0px) * 0.1)) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20vh) translateX(calc(var(--horizontal-offset, 0px) * 0.2)) scale(1);
+    }
+    30% {
+        transform: translateY(-30vh) translateX(calc(var(--horizontal-offset, 0px) * 0.3)) scale(1.1);
+    }
+    40% {
+        transform: translateY(-40vh) translateX(calc(var(--horizontal-offset, 0px) * 0.4)) scale(1);
+    }
+    50% {
+        transform: translateY(-50vh) translateX(calc(var(--horizontal-offset, 0px) * 0.5)) scale(1.2);
+    }
+    60% {
+        transform: translateY(-60vh) translateX(calc(var(--horizontal-offset, 0px) * 0.6)) scale(1);
+    }
+    70% {
+        transform: translateY(-70vh) translateX(calc(var(--horizontal-offset, 0px) * 0.7)) scale(0.9);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-80vh) translateX(calc(var(--horizontal-offset, 0px) * 0.8)) scale(0.8);
+    }
+    90% {
+        opacity: 0.6;
+        transform: translateY(-90vh) translateX(calc(var(--horizontal-offset, 0px) * 0.9)) scale(0.7);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120vh) translateX(var(--horizontal-offset, 0px)) scale(0.3);
+    }
+}
+
+/* También necesitas actualizar las luciérnagas para que empiecen desde abajo */
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #ffff99, #ffd700);
+    border-radius: 50%;
+    opacity: 0;
+    bottom: -20px; /* Cambié de 0 a -20px para que empiecen más abajo */
+    animation: flyUp 12s linear infinite, twinkle 2s ease-in-out infinite alternate;
+    box-shadow: 
+        0 0 10px rgba(255, 255, 153, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 30px rgba(255, 215, 0, 0.3);
+    will-change: transform, opacity;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px 15px;
+    }
+    
+    .greeting-section {
+        margin-bottom: 40px;
+    }
+    
+    .magic-button {
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting-section h1 {
+        margin-bottom: 20px;
+    }
+    
+    .magic-button {
+        padding: 12px 25px;
+    }
+}

@@ -1,0 +1,894 @@
+/* Reset y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: italic;
+}
+
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiDyp8kv8JHgFVrJJLm81xVFteOcEg.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiDyp8kv8JHgFVrJJLm81xVGdeOcEg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiDyp8kv8JHgFVrJJLm81xVF9eO.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z11lFc-K.woff2) format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1JlFc-K.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Dancing Script Font Classes */
+.dancing-script-special {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Título especial arriba */
+.special-title {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    text-align: center;
+    opacity: 1;
+    animation: titleFadeIn 2s ease-out;
+}
+
+.special-title h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease-in-out infinite, textFloat 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    margin: 0;
+    padding: 20px;
+    letter-spacing: 0.05em;
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes textFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Campo de flores múltiples */
+.flower-field {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    z-index: 1;
+    display: none; /* Oculto por defecto, se mostrará en desktop */
+}
+
+/* Flores del campo */
+.field-flower {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: flowerGrow 2s ease-out forwards;
+    transform-origin: bottom center;
+}
+
+@keyframes flowerGrow {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-5deg);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Variaciones de flores del campo */
+.field-flower.small {
+    transform: scale(0.6);
+    animation-delay: 0.5s;
+}
+
+.field-flower.medium {
+    transform: scale(0.8);
+    animation-delay: 1s;
+}
+
+.field-flower.large {
+    transform: scale(1);
+    animation-delay: 1.5s;
+}
+
+.field-flower.extra-large {
+    transform: scale(1.2);
+    animation-delay: 2s;
+}
+
+/* Efecto de viento en el campo */
+.field-flower:hover {
+    animation: fieldFlowerSway 2s ease-in-out infinite;
+}
+
+@keyframes fieldFlowerSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+}
+
+/* Media Queries para mostrar campo solo en desktop */
+@media (min-width: 1024px) {
+    .flower-field {
+        display: block;
+    }
+    
+    /* Ocultar una de las flores originales en desktop para no saturar */
+    .flowers .flower--3 {
+        display: none;
+    }
+    
+    /* Ajustar posición de letras para el campo de flores */
+    .lyrics-display {
+        top: 55%;
+        z-index: 10;
+    }
+    
+    /* Ajustar título principal */
+    .titulo {
+        top: 45% !important;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+}
+
+@media (max-width: 1023px) {
+    /* En móviles mantener diseño original */
+    .special-title {
+        top: 40px;
+    }
+    
+    .special-title h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #fff;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Controles de audio */
+.audio-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.audio-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.audio-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Fondo de estrellas */
+.stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Estilos para el texto principal mejorado */
+.text-container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.title-wrapper {
+    position: relative;
+}
+
+.main-text {
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+.sparkle-text {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #ffd700,
+        0 0 10px #ffd700,
+        0 0 15px #ffd700,
+        0 0 20px #ffd700;
+    animation: sparkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes sparkle {
+    0% { 
+        text-shadow: 
+            0 0 5px #ffd700,
+            0 0 10px #ffd700,
+            0 0 15px #ffd700,
+            0 0 20px #ffd700;
+    }
+    100% { 
+        text-shadow: 
+            0 0 10px #ffd700,
+            0 0 20px #ffd700,
+            0 0 30px #ffd700,
+            0 0 40px #ffd700,
+            0 0 50px #ffd700;
+    }
+}
+
+.size-large {
+    font-size: clamp(4rem, 12vw, 8rem);
+    letter-spacing: 0.1em;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
+.size-medium {
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 0.05em;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1s forwards;
+}
+
+.subtitle-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #b8e6b8;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px rgba(184, 230, 184, 0.5);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Letras sincronizadas */
+.lyrics-display {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 9;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    max-width: 80%;
+    transition: all 0.5s ease;
+}
+
+/* Contenedor de flores */
+.flowers-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Estilos para cada girasol mejorados */
+.sunflower {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
+    animation: windSway 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.sunflower-stem {
+    width: 8px;
+    background: linear-gradient(to bottom, #2d5a0d, #4a7c59, #228b22);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.sunflower-flower {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+/* Pétalos del girasol mejorados */
+.sunflower-petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.petal {
+    position: absolute;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #fff8dc);
+    border-radius: 50% 10% 50% 10%;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+    animation: petalGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes petalGlow {
+    0% { 
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+        filter: brightness(1);
+    }
+    100% { 
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        filter: brightness(1.2);
+    }
+}
+
+/* Centro del girasol mejorado */
+.sunflower-center {
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, #8b4513, #654321, #3e2723);
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sunflower-center::before {
+    content: '';
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, #654321, #3e2723, #2c1810);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Hojas mejoradas */
+.sunflower-leaf {
+    position: absolute;
+    background: linear-gradient(45deg, #228b22, #32cd32, #90ee90);
+    border-radius: 50% 10% 50% 10%;
+    transform-origin: bottom center;
+    box-shadow: 0 0 3px rgba(34, 139, 34, 0.5);
+}
+
+.leaf-left {
+    left: -15px;
+    top: 30%;
+    transform: rotate(-45deg);
+    animation: leafSway 5s ease-in-out infinite;
+}
+
+.leaf-right {
+    right: -15px;
+    top: 50%;
+    transform: rotate(45deg);
+    animation: leafSway 5s ease-in-out infinite reverse;
+}
+
+@keyframes leafSway {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-35deg) scale(1.05); }
+}
+
+/* Animaciones de viento mejoradas */
+@keyframes windSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes strongWindSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(4deg);
+    }
+    75% {
+        transform: rotate(-4deg);
+    }
+}
+
+/* Partículas de viento mejoradas */
+.wind-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.wind-particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    border-radius: 50%;
+    animation: windFloat 8s linear infinite;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes windFloat {
+    0% {
+        transform: translateX(-10px) translateY(100vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px) translateY(-10px);
+        opacity: 0;
+    }
+}
+
+/* Efectos de luz adicionales */
+.light-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.light-ray {
+    position: absolute;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 0, 0.2));
+    border-radius: 50%;
+    animation: lightRay 6s ease-in-out infinite;
+}
+
+@keyframes lightRay {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* Mariposas decorativas */
+.butterflies-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.butterfly {
+    position: absolute;
+    font-size: 20px;
+    animation: butterflyFly 10s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes butterflyFly {
+    0% {
+        transform: translateX(-50px) translateY(100vh) rotate(0deg);
+    }
+    25% {
+        transform: translateX(25vw) translateY(60vh) rotate(10deg);
+    }
+    50% {
+        transform: translateX(75vw) translateY(40vh) rotate(-5deg);
+    }
+    75% {
+        transform: translateX(50vw) translateY(20vh) rotate(15deg);
+    }
+    100% {
+        transform: translateX(110vw) translateY(-50px) rotate(0deg);
+    }
+}
+
+/* Variaciones de tamaño para girasoles */
+.sunflower.small {
+    animation-duration: 3s;
+}
+
+.sunflower.medium {
+    animation-duration: 4s;
+}
+
+.sunflower.large {
+    animation-duration: 5s;
+    animation-name: strongWindSway;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .text-container {
+        top: 20%;
+    }
+    
+    .size-large {
+        font-size: clamp(3rem, 10vw, 6rem);
+    }
+    
+    .size-medium {
+        font-size: clamp(2rem, 6vw, 4rem);
+    }
+    
+    .subtitle-text {
+        font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+    }
+    
+    .lyrics-display {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        max-width: 90%;
+    }
+}
+
+/* Contenedor de flores */
+.flowers-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Estilos para cada girasol */
+.sunflower {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
+    animation: windSway 4s ease-in-out infinite;
+}
+
+.sunflower-stem {
+    width: 8px;
+    background: linear-gradient(to bottom, #2d5a0d, #4a7c59);
+    border-radius: 4px;
+    position: relative;
+}
+
+.sunflower-flower {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/* Pétalos del girasol */
+.sunflower-petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.petal {
+    position: absolute;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-radius: 50% 10% 50% 10%;
+    transform-origin: center;
+}
+
+/* Centro del girasol */
+.sunflower-center {
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, #8b4513, #654321);
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sunflower-center::before {
+    content: '';
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, #654321, #3e2723);
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Hojas */
+.sunflower-leaf {
+    position: absolute;
+    background: linear-gradient(45deg, #228b22, #32cd32);
+    border-radius: 50% 10% 50% 10%;
+    transform-origin: bottom center;
+}
+
+.leaf-left {
+    left: -15px;
+    top: 30%;
+    transform: rotate(-45deg);
+}
+
+.leaf-right {
+    right: -15px;
+    top: 50%;
+    transform: rotate(45deg);
+}
+
+/* Animaciones de viento */
+@keyframes windSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes strongWindSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(4deg);
+    }
+    75% {
+        transform: rotate(-4deg);
+    }
+}
+
+/* Partículas de viento */
+.wind-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.wind-particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: windFloat 8s linear infinite;
+}
+
+@keyframes windFloat {
+    0% {
+        transform: translateX(-10px) translateY(100vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px) translateY(-10px);
+        opacity: 0;
+    }
+}
+
+/* Variaciones de tamaño para girasoles */
+.sunflower.small {
+    animation-duration: 3s;
+}
+
+.sunflower.medium {
+    animation-duration: 4s;
+}
+
+.sunflower.large {
+    animation-duration: 5s;
+    animation-name: strongWindSway;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .text-container {
+        top: 25%;
+    }
+    
+    .size-large {
+        font-size: clamp(3rem, 10vw, 6rem);
+    }
+    
+    .size-medium {
+        font-size: clamp(2rem, 6vw, 4rem);
+    }
+}
