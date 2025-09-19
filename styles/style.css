@@ -5,7 +5,6 @@
     box-sizing: border-box;
     font-style: italic;
 }
-
 /* devanagari */
 @font-face {
   font-family: 'Poppins';
@@ -83,13 +82,13 @@
 
 .special-title h1 {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+    background: linear-gradient(45deg, #ffd700, #b9ff8b, #4ecdc4, #45b7d1);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradientShift 6s ease-in-out infinite, textFloat 4s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
     margin: 0;
     padding: 20px;
     letter-spacing: 0.05em;
@@ -114,6 +113,7 @@
         transform: translateY(-10px);
     }
 }
+
 
 /* Campo de flores múltiples */
 .flower-field {
@@ -193,11 +193,6 @@
 @media (min-width: 1024px) {
     .flower-field {
         display: block;
-    }
-    
-    /* Ocultar una de las flores originales en desktop para no saturar */
-    .flowers .flower--3 {
-        display: none;
     }
     
     /* Ajustar posición de letras para el campo de flores */
