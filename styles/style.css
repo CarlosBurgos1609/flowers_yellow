@@ -313,7 +313,7 @@ html, body {
 /* Controles de audio */
 .audio-controls {
     position: fixed;
-    bottom: 20px; /* Mover al fondo */
+    bottom: 70px; /* Mover al fondo */
     right: 20px; /* Mover a la derecha */
     z-index: 1000;
     display: flex;
