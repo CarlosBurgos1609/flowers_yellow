@@ -80,13 +80,19 @@ function toggleMute() {
 
 function changeVolume() {
     if (!audio || !volumeSlider) return;
-    
+
     audio.volume = volumeSlider.value;
+
+    // Cambiar ícono según el nivel de volumen
     if (audio.volume === 0) {
-        muteBtn.textContent = "🔇";
+        muteIcon.src = "../assets/icons/stop.png"; // Ícono de volumen silenciado
+        muteBtn.title = "Silenciado";
+    } else if (audio.volume > 0 && audio.volume <= 0.5) {
+        muteIcon.src = "../assets/icons/sound.png"; // Ícono de volumen bajo
+        muteBtn.title = "Volumen bajo";
     } else {
-        muteBtn.textContent = "🔊";
-        audio.muted = false;
+        muteIcon.src = "../assets/icons/sound.png"; // Ícono de volumen alto
+        muteBtn.title = "Volumen alto";
     }
 }
 
