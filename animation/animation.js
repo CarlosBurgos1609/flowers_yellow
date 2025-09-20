@@ -144,9 +144,11 @@ var lyricsData = [
 // Función para animar texto palabra por palabra
 function animateTextWords(text) {
     const words = text.split(' ').map((word, index) => {
-        return `<span style="animation-delay: ${index * 0.3}s; display: inline-block;">${word}</span>`;
+        // Alternar entre las clases para diferentes estilos
+        const fontClass = index % 2 === 0 ? 'nunito-bold' : 'oleo-script-regular';
+        return `<span class="${fontClass}" style="animation-delay: ${index * 0.3}s; display: inline-block;">${word}</span>`;
     }).join(' ');
-    
+
     return `<span class="lyric-text">${words}</span>`;
 }
 
