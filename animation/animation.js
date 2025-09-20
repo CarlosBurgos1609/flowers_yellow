@@ -22,40 +22,59 @@ if (audio) {
     audio.addEventListener('error', (e) => console.error('Error al cargar audio:', e));
     audio.addEventListener('play', () => console.log('Audio iniciado'));
     audio.addEventListener('pause', () => console.log('Audio pausado'));
+
+    audio.addEventListener('pause', () => {
+        playPauseIcon.src = "../assets/icons/play_rounded.png"; // Cambiar el ícono a play
+        console.log("Audio pausado automáticamente.");
+    });
+
+    audio.addEventListener('play', () => {
+        playPauseIcon.src = "../assets/icons/pause_rounded.png"; // Cambiar el ícono a pausa
+        console.log("Audio iniciado automáticamente.");
+    });
 }
 
-// Funciones de control de audio
+// Referencias a los íconos
+var playPauseIcon = document.querySelector("#playPauseIcon");
+var muteIcon = document.querySelector("#muteIcon");
+
 function togglePlayPause() {
-    if (!audio) return;
-    
+    if (!audio) {
+        console.error("El elemento de audio no está disponible.");
+        return;
+    }
+
+    // Verificar si el audio está pausado o en reproducción
     if (audio.paused) {
         audio.play().then(() => {
-            playPauseBtn.textContent = "⏸️";
-            playPauseBtn.title = "Pausar";
+            // Cambiar el ícono a pausa
+            playPauseIcon.src = "../assets/icons/pause_rounded.png"; // Ruta correcta del ícono de pausa
+            console.log("Audio iniciado correctamente.");
         }).catch(error => {
-            console.error("Error al reproducir:", error);
-            alert("Error al reproducir el audio. Verifica que el archivo existe.");
+            console.error("Error al intentar reproducir el audio:", error);
+            alert("No se pudo reproducir el audio. Verifica que el archivo existe en la carpeta sound.");
         });
     } else {
         audio.pause();
-        playPauseBtn.textContent = "▶️";
-        playPauseBtn.title = "Reproducir";
+        // Cambiar el ícono a play
+        playPauseIcon.src = "../assets/icons/play_rounded.png"; // Ruta correcta del ícono de play
+        console.log("Audio pausado.");
     }
 }
 
+// Event listeners para los botones de control de audio
+if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
 function toggleMute() {
     if (!audio) return;
-    
+
     if (audio.muted) {
         audio.muted = false;
-        muteBtn.textContent = "🔊";
+        muteIcon.src = "../assets/icons/sound.png"; // Cambiar a ícono de sonido
         muteBtn.title = "Silenciar";
-        if (volumeSlider) volumeSlider.style.opacity = "1";
     } else {
         audio.muted = true;
-        muteBtn.textContent = "🔇";
+        muteIcon.src = "../assets/icons/stop.png"; // Cambiar a ícono de silencio
         muteBtn.title = "Activar sonido";
-        if (volumeSlider) volumeSlider.style.opacity = "0.5";
     }
 }
 
@@ -76,27 +95,29 @@ if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
 if (muteBtn) muteBtn.addEventListener('click', toggleMute);
 if (volumeSlider) volumeSlider.addEventListener('input', changeVolume);
 
-// Intentar reproducir audio automáticamente con manejo de errores
+// Función para inicializar el audio y verificar su estado
 function initAudio() {
     if (!audio) {
-        console.error("Audio no encontrado");
+        console.error("El elemento de audio no está disponible.");
         return;
     }
-    
-    // Verificar si el archivo existe
-    console.log("Intentando cargar:", audio.src);
-    
+
+    // Verificar si el archivo de audio está cargado correctamente
+    console.log("Intentando cargar el archivo de audio:", audio.src);
+
     audio.play().then(() => {
-        playPauseBtn.textContent = "⏸️";
-        console.log("Audio iniciado automáticamente");
+        // Cambiar el ícono a pausa si el audio se inicia automáticamente
+        playPauseIcon.src = "../assets/icons/pause_rounded.png";
+        console.log("Audio iniciado automáticamente.");
     }).catch(error => {
         console.log("El navegador bloqueó la reproducción automática:", error);
-        playPauseBtn.textContent = "▶️";
-        // Mostrar mensaje al usuario
+        // Cambiar el ícono a play si el audio no se puede iniciar automáticamente
+        playPauseIcon.src = "../assets/icons/play_rounded.png";
         showAudioMessage();
     });
 }
 
+// Mostrar mensaje al usuario si el audio no se puede reproducir automáticamente
 function showAudioMessage() {
     const message = document.createElement('div');
     message.className = 'audio-message';
@@ -117,9 +138,9 @@ function showAudioMessage() {
         text-align: center;
         font-weight: bold;
     `;
-    
+
     document.body.appendChild(message);
-    
+
     setTimeout(() => {
         if (message.parentNode) {
             message.parentNode.removeChild(message);
@@ -281,7 +302,7 @@ function createFlowerField() {
     // Solo crear campo en dispositivos desktop
     if (window.innerWidth < 1024) return;
     
-    const numberOfFlowers = 15; // Número de flores en el campo
+    const numberOfFlowers = 15; // Número de flores en
     const flowerTypes = ['flower--1', 'flower--2', 'flower--3'];
     const sizes = ['small', 'medium', 'large', 'extra-large'];
     

@@ -292,29 +292,81 @@ body::before {
 /* Controles de audio */
 .audio-controls {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    bottom: 20px; /* Mover al fondo */
+    right: 20px; /* Mover a la derecha */
     z-index: 1000;
     display: flex;
     gap: 10px;
+    /* background: rgba(0, 0, 0, 0.5);  */
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
+/* Contenedor de los botones con íconos */
+.audio-btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botones de audio */
 .audio-btn {
-    background: rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.audio-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Íconos de los botones */ 
+.audio-btn img {
+    width: 40px;
+    height: 40px;
+    filter: invert(100%); /* Invertir el color de los íconos negros */
+}
+
+/* Ícono de neonlog */
+.neon-log {
+    width: 30px;
+    height: 30px;
+    animation: neonGlow 1.5s infinite alternate;
+    border-radius: 50px;
+}
+
+/* Botón de sonido */
+.mute-btn {
+    background: rgba(255, 255, 255, 0.2); /* Fondo transparente */
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 20px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Sombra blanca */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.audio-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+.mute-btn:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Ícono dentro del botón de sonido */
+.mute-btn img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%); /* Invertir color para que sea blanco */
 }
 
 /* Fondo de estrellas */

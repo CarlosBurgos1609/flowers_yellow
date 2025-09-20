@@ -18,14 +18,7 @@
     <!-- Audio con controles mejorados -->
     <audio id="backgroundAudio" src="../sound/Flores amarillas2.mp3" loop preload="auto"></audio>
 
-    <!-- Controles de audio -->
-    <div class="audio-controls">
-        <button id="playPauseBtn" class="audio-btn" title="Reproducir/Pausar">🎵</button>
-        <button id="muteBtn" class="audio-btn" title="Silenciar/Activar sonido">🔊</button>
-        <div class="volume-control">
-            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7" class="volume-slider">
-        </div>
-    </div>
+    
 
     <!-- Fondo de estrellas -->
     <div class="stars-background" id="starsBackground"></div>
@@ -326,6 +319,23 @@
           <div class="leaf leaf--3"></div>
         </div>
       </div>
+    </div>
+    <!-- Controles de audio -->
+    <div class="audio-controls">
+        <div class="audio-btn-wrapper">
+            <img class="neon-log" src="../assets/icon/neonlog.png" alt="Neon Log" />
+            <button id="playPauseBtn" class="audio-btn" title="Reproducir/Pausar">
+                <img id="playPauseIcon" src="../assets/icons/play_rounded.png" alt="Play" />
+            </button>
+        </div>
+        <div class="audio-btn-wrapper">
+            <button id="muteBtn" class="audio-btn mute-btn" title="Silenciar/Activar sonido">
+                <img id="muteIcon" src="../assets/icons/sound.png" alt="Sound" />
+            </button>
+        </div>
+        <div class="volume-control">
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7" class="volume-slider" />
+        </div>
     </div>
     <script src="../animation/animation.js"></script>
     <script src="../animation/main.js"></script>
