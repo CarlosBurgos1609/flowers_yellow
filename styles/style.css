@@ -799,6 +799,34 @@ html, body {
     }
 }
 
+/* Ícono de refresco */
+.refresh-icon {
+    position: fixed;
+    top: -80px; /* Inicialmente fuera de la vista */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    transition: top 0.3s ease, transform 0.3s ease;
+}
+
+.refresh-icon img {
+    width: 100%;
+    height: 100%;
+    animation: none; /* Animación desactivada por defecto */
+}
+
+/* Animación de rotación */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* Variaciones de tamaño para girasoles */
 .sunflower.small {
     animation-duration: 3s;
