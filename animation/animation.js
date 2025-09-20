@@ -62,6 +62,19 @@ function togglePlayPause() {
     }
 }
 
+// Event listeners para los eventos del audio
+if (audio) {
+    audio.addEventListener('play', () => {
+        playPauseIcon.src = "../assets/icons/pause_rounded.png"; // Cambiar el ícono a pausa
+        console.log("Audio iniciado automáticamente.");
+    });
+
+    audio.addEventListener('pause', () => {
+        playPauseIcon.src = "../assets/icons/play_rounded.png"; // Cambiar el ícono a play
+        console.log("Audio pausado automáticamente.");
+    });
+}
+
 // Event listeners para los botones de control de audio
 if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
 function toggleMute() {
