@@ -92,6 +92,10 @@
     margin: 0;
     padding: 20px;
     letter-spacing: 0.05em;
+    @media (max-width: 600px) {
+        font-size: clamp(2rem, 8vw, 3rem);
+        font-size: 8px;
+    }
 }
 
 @keyframes titleFadeIn {

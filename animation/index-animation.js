@@ -1,9 +1,9 @@
 // Configuración de luciérnagas
 const fireflyConfig = {
-    baseCount: 30,        // Número base de luciérnagas
-    maxCount: 60,         // Número máximo durante hover
-    spawnRate: 300,       // Velocidad de creación (ms)
-    activeSpawnRate: 100  // Velocidad durante hover (ms)
+    baseCount: 1110,        // Número base de luciérnagas (aumentado)
+    maxCount: 1200,        // Número máximo durante hover (aumentado)
+    spawnRate: 200,       // Velocidad de creación (ms) (más rápido)
+    activeSpawnRate: 50   // Velocidad durante hover (ms) (más rápido)
 };
 
 let isButtonActive = false;
@@ -28,13 +28,13 @@ function createFirefly() {
     firefly.style.left = `${leftPosition}%`;
     
     // Asegurar que empiecen desde más abajo de la pantalla
-    firefly.style.bottom = '-30px'; // Cambié de '0px' a '-30px'
+    firefly.style.bottom = '-30px';
     firefly.style.position = 'absolute';
     
     // Delay de animación aleatorio mínimo
     firefly.style.animationDelay = `${Math.random() * 1}s, ${Math.random() * 0.5}s`;
     
-    // Duración de animación variable (aumenté un poco la duración)
+    // Duración de animación variable
     const baseDuration = firefly.classList.contains('large') ? 16 : 
                         firefly.classList.contains('small') ? 12 : 14;
     const flyDuration = baseDuration + Math.random() * 4;
@@ -86,12 +86,12 @@ function startFireflies() {
 
 // Crear ráfaga de luciérnagas
 function createFireflyBurst() {
-    const burstCount = 10 + Math.random() * 10; // Entre 10 y 20 luciérnagas
+    const burstCount = 20 + Math.random() * 20; // Entre 20 y 40 luciérnagas
     
     for (let i = 0; i < burstCount; i++) {
         setTimeout(() => {
             addFirefly();
-        }, i * 50); // Menor delay entre cada luciérnaga para efecto más intenso
+        }, i * 30); // Menor delay entre cada luciérnaga para efecto más intenso
     }
 }
 
@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Crear luciérnagas iniciales distribuidas
     setTimeout(() => {
-        for (let i = 0; i < 8; i++) {
-            setTimeout(() => addFirefly(), i * 150);
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => addFirefly(), i * 100);
         }
     }, 500);
     
@@ -145,15 +145,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Crear luciérnagas adicionales cada cierto tiempo
 setInterval(() => {
-    if (Math.random() < 0.7) { // 70% de probabilidad
+    if (Math.random() < 0.9) { // 90% de probabilidad
         addFirefly();
     }
-}, 500);
+}, 300);
 
 // Crear luciérnagas continuamente para efecto fluido
 setInterval(() => {
     addFirefly();
-}, 600);
+}, 400);
 
 // Limpiar interval al salir de la página
 window.addEventListener('beforeunload', function() {
